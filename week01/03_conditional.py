@@ -1,3 +1,6 @@
+import math
+
+
 def prob_start_sex_work(age, ever_sw, life_sex_risk, rred_rc):
     """Compute the probability of a woman becoming a sex worker.
 
@@ -9,14 +12,14 @@ def prob_start_sex_work(age, ever_sw, life_sex_risk, rred_rc):
     base_rate_sw = 0.0020
 
     if life_sex_risk < 2:
-        return 0  # we know the overall probability will be 0
+        return 0  # we know the final probability will be 0, so can exit early
 
     if life_sex_risk == 3:
         risk_factor = 3
     else:
         risk_factor = 1
 
-    base_prob = base_rate_sw * rred_rc
+    base_prob = base_rate_sw * math.sqrt(rred_rc)
 
     if 15 <= age < 20:
         age_factor = 1
@@ -37,8 +40,19 @@ def prob_start_sex_work(age, ever_sw, life_sex_risk, rred_rc):
     return min(prob, 1)
 
 
-def prob_infection_from_long_term_partner():
+# Try a couple of examples that should have probability 0
+print(prob_start_sex_work(20, True, 1, 1.0))  # low life risk
+print(prob_start_sex_work(55, False, 2, 1.0))  # age outside bounds
+# And some with non-zero probability
+print(prob_start_sex_work(20, False, 2, 1.0))
+print(prob_start_sex_work(20, False, 3, 1.0))
+print(prob_start_sex_work(20, True, 2, 1.0))
+
+
+# How can we write a function that computes the probability of a long-term
+# partner being diagnosed with HIV? [Eq. 9, Section 3.6 in Model Details]
+# This should depend on the the proportion of HIV-infected long-term partners
+# diagnosed at the previous time, and the proportion of subjects with HIV
+# who are diagnosed.
+def prob_long_term_partner_diagnosed():
     ...
-
-
-print("Hello world")
