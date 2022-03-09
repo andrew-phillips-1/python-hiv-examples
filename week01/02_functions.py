@@ -25,3 +25,15 @@ print("Probability of dying = ", probability_death(death_rate, period))
 # (Assuming a sample has already been taken from a Normal distribution N(0,1))
 # def calc_eprate(...):
 
+import math
+
+n = 0.4
+age_group = 4
+
+def calc_eprate(n, age_group):
+    """ the rate of starting to have a long term condomless sex partner (ep=1)"""
+    return math.exp(0.25*n) / age_group
+
+eprate = calc_eprate(n, age_group)
+
+print("eprate =", eprate)
