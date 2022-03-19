@@ -54,5 +54,33 @@ print(prob_start_sex_work(20, True, 2, 1.0))
 # This should depend on the the proportion of HIV-infected long-term partners
 # diagnosed at the previous time, and the proportion of subjects with HIV
 # who are diagnosed.
-def prob_long_term_partner_diagnosed():
-    ...
+
+epdiag_tm1 = False
+n_hiv = 1000
+n_diag = 700
+p_diag = n_diag / n_hiv
+p_epdiag = 0.5
+d_epdiag = p_diag - p_epdiag
+
+def prob_long_term_partner_diagnosed(d_epdiag, p_diag):
+    if d_epdiag < 0:
+        return 0
+    elif 0 <= d_epdiag < 0.05:
+        return p_diag / 5
+    elif 0.05 <= d_epdiag < 0.1:
+        return p_diag / 2
+    elif 0.1 <= d_epdiag:
+        return p_diag
+
+# random number between 0 and 1
+random = 0.2
+
+epdiag = False
+if (epdiag_tm1 is False) and (random < prob_long_term_partner_diagnosed(d_epdiag, p_diag)):
+    epdiag = True
+
+print('p_diag', p_diag)
+print('d_epdiag',d_epdiag)
+print('epdiag_tm1', epdiag_tm1)
+print('epdiag', epdiag)
+
