@@ -59,7 +59,7 @@ epdiag_tm1 = False
 n_hiv = 1000
 n_diag = 700
 p_diag = n_diag / n_hiv
-p_epdiag = 0.5
+p_epdiag = 0.6
 d_epdiag = p_diag - p_epdiag
 
 def prob_long_term_partner_diagnosed(d_epdiag, p_diag):
