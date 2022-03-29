@@ -69,7 +69,7 @@ def prob_long_term_partner_diagnosed(d_epdiag, p_diag):
         return p_diag / 5
     elif 0.05 <= d_epdiag < 0.1:
         return p_diag / 2
-    else:
+    elif 0.1 <= d_epdiag:
         return p_diag
 
 
