@@ -5,6 +5,9 @@ my_list = [5, 2, 9, 1, 7]
 print("First element =", my_list[0])
 print("Fourth element =", my_list[3])
 
+# We can get the length of the list using len
+print("My list is", len(my_list), "elements long.")
+
 # Lists can contain any type
 # They can be useful, but they don't have some of the mathematical functionality that we want
 # e.g. adding vectors, multiplying vectors by a scalar
@@ -29,6 +32,9 @@ v7 = np.array([3.0]*25)   # also 25 threes
 
 # we can find a value at a given index as before
 print("Second element of v1 = ", v1[1])
+
+# and get the length like before
+print("v1 is of size", len(v1))
 
 # we can print arrays
 print("v1 =", v1, "v2 = ", v2)
@@ -88,8 +94,9 @@ Another_Matrix = np.array([[1., 0.5, 0.3], [0.1, 1.5, 2.0], [3.3, 9.9, 6.2]])
 # Addition etc. still applies element-wise
 Sum_Matrix = Identity_Matrix + Another_Matrix
 
-# We access elements with two separate indices like so (remember indexing starts at 0):
-print("I_00 = ", Identity_Matrix[0][0])
-print("A_21 = ", Another_Matrix[2][1])
+# We access elements with two comma separated indices
+# note that this is different from providing a list of indices as we don't have the extra pair of []
+print("I_00 = ", Identity_Matrix[0, 0])
+print("A_21 = ", Another_Matrix[2, 1])
 
 # There is much more functionality available when and if you need it!
