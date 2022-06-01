@@ -1,22 +1,10 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-
-# Classes can be used to describe a unit which achieves a particular purpose, for example producing output statistics
-# let's use the person class from before to begin with
-class Person:
-    def __init__(self):  # This assigns values to the variables below for each person at the start of each period
-        """Initialise a new person."""
-        self.infected = False
-        self.time_of_infection = None
-        self.ever_infected = False
-        self.new_infection = False
-
-        self.contacts = np.random.poisson(8)
-        self.infected_contacts = 0
-
-    def data_string(self):
-        return f"Infected: {self.infected}, Time of infection: {self.time_of_infection}, Ever infected: {self.ever_infected}, Infected Contacts: {self.infected_contacts}"
+# Classes can be used to describe a unit which achieves a particular purpose,
+# for example producing output statistics!
+# we'll need to use the Person class from our toy model in order to get a population going
+from infection_toy_model import Person
 
 
 # The Output class will contain all the methods to calculate output statistics, as well as storing that data.
