@@ -34,11 +34,11 @@ class Person:
     def data_string(self):
         return f"Infected: {self.infected}, Time of infection: {self.time_of_infection}, Ever infected: {self.ever_infected}, Infected Contacts: {self.infected_contacts}"
 
-    def infect(person, time):
-        person.infected = True
-        person.time_of_infection = time
-        person.ever_infected = True
-        person.new_infection = True
+    def infect(self, time):
+        self.infected = True
+        self.time_of_infection = time
+        self.ever_infected = True
+        self.new_infection = True
 
 
 def initialise_population(population_size):
