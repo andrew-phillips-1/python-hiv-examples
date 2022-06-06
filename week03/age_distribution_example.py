@@ -3,7 +3,7 @@ from scipy.interpolate import interp1d
 import matplotlib.pyplot as plt
 
 
-# Classes provide an interface for using other code. You don't need to know exactly how the class works as long as you
+# Classes provide an interface for use in other code. You don't need to know exactly how the class works as long as you
 # know how to interact with it, i.e. what data and methods are available to you. The implementation of the class can
 # then be changed without changing any code that depends on it, as long as the necessary interface is not changed.
 # For example, the age distribution class that we use in the hivpy code to generate a population based on a probability

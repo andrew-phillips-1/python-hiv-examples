@@ -1,6 +1,7 @@
-import numpy as np
 # Python classes can be used to organise and encapsulate data which is relevant to a particular part of the code
 # For example configurations
+
+import numpy as np
 
 
 # Running multiple simulations with different configurations can easily get messy
@@ -42,6 +43,9 @@ class Config:
         print("Config okay?", config_valid)
         return config_valid
 
+    # Other methods could be useful, for example saving the config to a file so
+    # that randomly generated configs can be retained for future reference.
+
 
 # Let's create an ensemble of configurations, and the population size and the initial prevalence
 cfg_list = [Config(num_people=1000, infectious_period=3, sim_time=100) for i in range(5)]
@@ -53,8 +57,9 @@ for cfg in cfg_list:
 # 2. Each config has the same population size (because we passed it as input)
 # 3. The configs vary in initial prevalence because it is independently sampled as part of the init of each config
 
-# These configurations can now easily be run in separate simulations, either sequentially by iterating over the list
-# or in parallel! (This is particularly useful for parallel code because all of the config parameters are generated
+# Configurations can be created very concisely, and  configurations can now easily be run in separate simulations,
+# either sequentially by iterating over the list or in parallel!
+# (This is particularly useful for parallel code because all of the config parameters are generated
 # early on and kept separate and can be passed around as a complete unit.)
 # e.g.
 # for cfg in cfg_list:
