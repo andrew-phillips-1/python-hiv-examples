@@ -1,13 +1,21 @@
+# This file contains the infection toy model developed previously (with a small change to the Person class.)
+# This can be run as an independent python script by un-commenting out the last two lines to run the simulation
+# and plot the results.
+
+# This file is useful for illustrating the Person class in context, and contains code / methods (such as Update)
+# which you may wish to import, re-purpose, or modify for your simulation class (see class_exercise.py)
+# to avoid re-doing this logic!
+
 import numpy as np
 import matplotlib.pyplot as plt
 
 # Parameters that control the simulation
-# population_size = 1000
-# rate_per_infected_contact = 0.2  # 20% chance of becoming infected per infected contact
-# duration_of_infectivity = 2  #  Assume 2 time periods (this needs to be >1)
+population_size = 1000
+rate_per_infected_contact = 0.2  # 20% chance of becoming infected per infected contact
+duration_of_infectivity = 2  #  Assume 2 time periods (this needs to be >1)
 contact_number_parameter = 8  # Parameter determining the distribution of number of contacts per person
-# initial_prevalence_in_contacts = 0.01  # No contacts are infected at time 0 at start of the simulation
-# simulation_time = 20  # How many steps to simulate the population for
+initial_prevalence_in_contacts = 0.01  # No contacts are infected at time 0 at start of the simulation
+simulation_time = 20  # How many steps to simulate the population for
 
 
 # This is a template for an 'object'; variables and functions are defined inside the class and are accessed using a '.' syntax e.g. x.infected = True
@@ -26,21 +34,17 @@ class Person:
     def data_string(self):
         return f"Infected: {self.infected}, Time of infection: {self.time_of_infection}, Ever infected: {self.ever_infected}, Infected Contacts: {self.infected_contacts}"
 
-    # Here we are overwriting the variables in the class statement for a given Person object with infection
-    # The person object is passed as an argument to the method, and the method accesses the object's data using '.'
-
-
-def infect(person, time):
-    person.infected = True
-    person.time_of_infection = time
-    person.ever_infected = True
-    person.new_infection = True
+    def infect(person, time):
+        person.infected = True
+        person.time_of_infection = time
+        person.ever_infected = True
+        person.new_infection = True
 
 
 def initialise_population(population_size):
     """Create a population with only one person infected."""
     population = [Person() for _ in range(population_size)]
-    infect(population[0], 0)
+    population[0].infect(0)  # infect the first person
     return population
 
 
@@ -88,7 +92,7 @@ def update(population, time):
             for i in range(person.infected_contacts):
                 e = np.random.uniform()
                 if e < rate_per_infected_contact:
-                    infect(person, time)
+                    person.infect(time)
                     break
 
         # contacts_if_infected is the number of contacts a person with infection has
@@ -134,5 +138,5 @@ def plot_results(results):
     plt.show()
 
 
-#results = simulate(population_size)
-#plot_results(results)
+# results = simulate(population_size)
+# plot_results(results)
